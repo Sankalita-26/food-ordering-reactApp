@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+
+# dependencies
+node_modules
+
+# build output
+dist
+
+# parcel cache
+.parcel-cache
+
+# env files (future use)
+.env

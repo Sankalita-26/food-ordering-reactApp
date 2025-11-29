@@ -1,0 +1,90 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+}
+
+.logo{
+    width: 170px;
+    height: 150px;
+}
+
+.nav-items{
+    padding: 0px 20px;
+}
+
+.nav-items > ul > li{
+    padding: 10px;
+    margin: 10px;
+    
+   
+}
+
+.nav-items > ul{
+    font-size: 24px;
+    list-style-type: none;
+    display: flex;
+    
+    
+}
+.res-card{
+   
+    width: 200px;
+    padding: 5px;
+    margin: 5px;
+    
+}
+.res-card:hover{
+    
+    border: 1px solid black;
+    cursor: pointer;
+    
+   
+    
+    
+}
+
+.res-container{
+    display: flex;
+    flex-wrap:wrap ;
+}
+.search{
+    padding: 10px;
+}
+
+.res-logo{
+   
+    width: 100%;
+}
+
+.filter-btn{
+    margin: 10px;
+    cursor: pointer;
+}
+
+.Shimmer_card{
+
+    width: 200px;
+    height:400px;
+    padding: 5px;
+    margin: 5px;
+    background-color:rgb(236, 241, 241);
+
+}
+
+.Shimmer-conatiner{
+    display: flex;
+     flex-wrap:wrap ;
+    
+}
+
+.login_btn{
+padding: 0px 20px;
+cursor: pointer;
+background-color: rgb(229, 176, 77);
+}
+
+
+.filter{
+    display: flex;
+}

@@ -1,0 +1,25 @@
+{
+  "name": "day2-ignitingapp",
+  "version": "1.0.0",
+  "description": "This is Namaste React",
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "(https://github.com/Sankalita-26/React_Learning)"
+  },
+  "license": "ISC",
+  "author": "Sankalita Nandan",
+  "type": "commonjs",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.1"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  }
+}
