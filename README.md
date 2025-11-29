@@ -7,7 +7,7 @@ A simple food ordering web application built using React and Parcel. It displays
 ---
 
 ## 📸 Preview
-![Screenshot](./screenshot.png)
+![Screenshot](./ScreenShotPreview/Preview_1.png)
 
 ---
 
