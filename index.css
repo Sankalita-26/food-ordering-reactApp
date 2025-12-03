@@ -33,7 +33,18 @@
     padding: 5px;
     margin: 5px;
     
+    
 }
+
+
+.rescard-logo {
+  width: 100%;
+  height: 200px;            /* <<< Fix */
+ object-fit: cover;
+  border-radius: 10px;
+  background-color: #e5e5e5;
+} 
+
 .res-card:hover{
     
     border: 1px solid black;
