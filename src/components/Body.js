@@ -2,6 +2,8 @@ import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import { Restaurant_API } from "../utils/constant";
+import useOnlineStatus from "../utils/useOnlineStatus";
 const Body = () => {
   const [ListOfRes, setListOfRes] = useState([]);
   const [searchText, setSearchText] = useState("");
@@ -13,9 +15,7 @@ const Body = () => {
 
   
   const fetchData = async () => {
-  const data = await fetch(
-    "https://corsproxy.io/https://namastedev.com/api/v1/listRestaurants?lat=17.385044&lng=78.486671"
-  );
+  const data = await fetch(Restaurant_API);
   const json = await data.json();
 
   const cards = json?.data?.data?.cards || [];
@@ -33,6 +33,12 @@ const Body = () => {
   setCopyListOfRes(list);
 };
 
+const OnlineStatus =useOnlineStatus();
+if (OnlineStatus === false)
+  return(
+    <h1>You are offline.. please check your internet</h1>
+
+  )
 
 
 

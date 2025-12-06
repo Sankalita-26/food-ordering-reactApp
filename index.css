@@ -99,3 +99,16 @@ background-color: rgb(229, 176, 77);
 .filter{
     display: flex;
 }
+
+.user-card{
+    border: 1px solid black;
+    padding: 10px;
+    background-color: azure;
+    width: fit-content;
+}
+
+.profile_img{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}
