@@ -1,3 +1,4 @@
+import React from "react";
 import {lazy,Suspense} from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
@@ -6,6 +7,7 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
+
 
 import { createBrowserRouter,RouterProvider,Outlet } from "react-router-dom";
 
@@ -56,10 +58,7 @@ const appRouter=createBrowserRouter([
     element:<About />,
       },
 
-    {
-    path:"/contact",
-    element:<Contact />,
-    }, 
+   
 
     {
     path:"/grocery",
@@ -70,6 +69,11 @@ const appRouter=createBrowserRouter([
     path:"/restaurants/:resId",
     element:<RestaurantMenu />,
     }, 
+
+    {
+      path:"/contact",
+      element:<Contact/>,
+    }
 
     ],
     errorElement:<Error/>,
@@ -85,3 +89,5 @@ const appRouter=createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<RouterProvider router={appRouter} />);
+
+

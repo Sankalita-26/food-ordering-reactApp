@@ -1,66 +1,67 @@
-    //using class based component
-    import React from "react"
+//using class based component
+import React from "react";
 
-    class UserClass extends React.Component{
-        constructor(props){
-            super(props);
+class UserClass extends React.Component {
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      userInfo: "example",
+      location: "example",
+      avatar_url:
+        "https://img.freepik.com/free-vector/user-blue-gradient_78370-4692.jpg?semt=ais_hybrid&w=740&q=80",
+    };
+  }
 
-            this.state={
-                userInfo:"example",
-                location:"example",
-                avatar_url: "https://img.freepik.com/free-vector/user-blue-gradient_78370-4692.jpg?semt=ais_hybrid&w=740&q=80"
-                
-            };
-        };
+  async componentDidMount() {
+    const data = await fetch("https://api.github.com/users/sankalita-26");
+    const json = await data.json();
 
-    async componentDidMount(){
-        const data=await fetch("https://api.github.com/users/sankalita-26");
-        const json= await data.json();
+    this.setState({
+      userInfo: json,
+    });
+    console.log(json);
+  }
 
-        this.setState({
-            userInfo:json,
-        });
-        console.log(json);
-    }
-    componentDidUpdate(){
-        console.log("Updated");
-    }
-    componentWillUnmount(){
-        console.log("Unmounted");
-    }
+  componentDidUpdate() {
+    console.log("Updated");
+  }
+  componentWillUnmount() {
+    console.log("Unmounted");
+  }
 
+  render() {
+    const { name, location, avatar_url } = this.state.userInfo;
 
+    return (
+      <div className="max-w-md mx-auto bg-gradient-to-br from-blue-50 to-blue-100 shadow-xl rounded-2xl p-8 border border-blue-200 text-center hover:scale-[1.02] transition-all duration-300">
+        <img
+          className="w-36 h-36 mx-auto rounded-full border-4 border-white shadow-md"
+          src={avatar_url}
+          alt="profile"
+        />
 
-        render(){
+        <h1 className="text-3xl font-extrabold text-gray-800 mt-6">
+          👨‍💻 Developer: <span className="text-blue-600">{name}</span>
+        </h1>
 
-            // const{name,location}=this.props;//best way to use props like this
-            // const {count,count1}=this.state;
+        <h3 className="text-lg text-gray-600 mt-1">
+          📍 Location: <span className="font-semibold">{location}</span>
+        </h3>
 
-            const {name,location,avatar_url}=this.state.userInfo;
+        <h4 className="mt-4 text-gray-700 font-medium">
+          Reach out:{" "}
+          <span className="text-blue-500 font-semibold">
+            monlearning24@gmail.com
+          </span>
+        </h4>
 
+        <button className="mt-6 px-6 py-2 text-white bg-blue-600 rounded-xl hover:bg-blue-700 shadow-lg transition-all duration-200">
+          🚀 Connect on GitHub
+        </button>
+      </div>
+    );
+  }
+}
 
-
-
-            return(
-        <div className="user-card">
-            {/* <button onClick={()=>{
-                this.setState(
-                    {count:this.state.count+1,}
-                )
-            }}>Press to increase count</button>
-            <h1>count:{count}</h1>
-            <h1>count1:{count1}</h1> */}
-
-
-            <h1>Developer :{name} </h1>
-        <h3>location : {location}</h3>
-        <img className="profile_img"src={avatar_url}/>
-        <h4>Reach out: monlearning24@gmail.com</h4>
-        </div>
-        )
-        }
-    }
-
-
-    export default UserClass;
+export default UserClass;

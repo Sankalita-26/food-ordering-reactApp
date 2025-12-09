@@ -1,6 +1,6 @@
 export const CDN_URL="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
 
-export const LOGO_URL="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtBoWYPr5D5o9KwnuvOzFh4gkZ9JNF0i-EAw&s";
+export const LOGO_URL="https://market-resized.envatousercontent.com/previews/files/108993892/Preview.jpg?w=590&h=590&cf_fit=crop&crop=top&format=auto&q=85&s=892689c13d3946967679c17ab45c24c5fa4501e0d351ed955341a77e5b890b42";
 
 
 
