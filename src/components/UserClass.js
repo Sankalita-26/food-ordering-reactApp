@@ -20,12 +20,12 @@ class UserClass extends React.Component {
     this.setState({
       userInfo: json,
     });
-    console.log(json);
   }
 
   componentDidUpdate() {
     console.log("Updated");
   }
+
   componentWillUnmount() {
     console.log("Unmounted");
   }
@@ -34,31 +34,34 @@ class UserClass extends React.Component {
     const { name, location, avatar_url } = this.state.userInfo;
 
     return (
-      <div className="max-w-md mx-auto bg-gradient-to-br from-blue-50 to-blue-100 shadow-xl rounded-2xl p-8 border border-blue-200 text-center hover:scale-[1.02] transition-all duration-300">
+      <div className="max-w-md w-full mx-auto bg-gradient-to-br from-blue-50 to-indigo-100 shadow-xl rounded-2xl p-8 sm:p-10 text-center space-y-6 hover:scale-[1.01] transition-all duration-300">
+        
         <img
-          className="w-36 h-36 mx-auto rounded-full border-4 border-white shadow-md"
+          className="w-32 h-32 mx-auto rounded-full border-4 border-white shadow-md object-cover"
           src={avatar_url}
-          alt="profile"
+          alt="Profile"
         />
 
-        <h1 className="text-3xl font-extrabold text-gray-800 mt-6">
-          👨‍💻 Developer: <span className="text-blue-600">{name}</span>
+        <h1 className="text-3xl font-extrabold text-gray-800">
+          👨‍💻 {name}
         </h1>
 
-        <h3 className="text-lg text-gray-600 mt-1">
-          📍 Location: <span className="font-semibold">{location}</span>
+        <h3 className="text-lg text-gray-600 font-medium">
+          📍 {location}
         </h3>
 
-        <h4 className="mt-4 text-gray-700 font-medium">
-          Reach out:{" "}
-          <span className="text-blue-500 font-semibold">
-            monlearning24@gmail.com
-          </span>
+        <h4 className="text-gray-700 font-semibold">
+          📧 Reach out: 
+          <span className="text-blue-600"> monlearning24@gmail.com</span>
         </h4>
 
-        <button className="mt-6 px-6 py-2 text-white bg-blue-600 rounded-xl hover:bg-blue-700 shadow-lg transition-all duration-200">
-          🚀 Connect on GitHub
-        </button>
+        <a
+          href="https://github.com/sankalita-26"
+          target="_blank"
+          className="inline-block bg-gray-900 text-white px-6 py-2 mt-2 rounded-xl hover:bg-black transition shadow-md font-semibold"
+        >
+          🔗 View GitHub Profile
+        </a>
       </div>
     );
   }

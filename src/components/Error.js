@@ -2,6 +2,7 @@ import { useRouteError } from "react-router-dom";
 
 const Error = () => {
   const err = useRouteError();
+
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-red-50 to-orange-100 p-6 text-center space-y-6">
 
@@ -17,13 +18,24 @@ const Error = () => {
         {err.status} : {err.statusText}
       </h3>
 
-      <a
-        href="/"
-        className="mt-4 px-6 py-3 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 transition shadow-md"
-      >
-        ⬅ Go Back to Home
-      </a>
-      
+      <div className="flex flex-wrap gap-4 justify-center pt-2">
+        {/* Home button */}
+        <a
+          href="/"
+          className="px-6 py-3 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 transition shadow-md"
+        >
+          ⬅ Go Back Home
+        </a>
+
+        {/* Report issue button */}
+        <a
+          href="https://github.com/settings/profile"
+          target="_blank"
+          className="px-6 py-3 bg-gray-800 text-white font-semibold rounded-lg hover:bg-black transition shadow-md"
+        >
+          🐞 Report Issue
+        </a>
+      </div>
     </div>
   );
 };

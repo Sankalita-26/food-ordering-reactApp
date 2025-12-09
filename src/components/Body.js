@@ -19,8 +19,8 @@ const Body = () => {
     const json = await data.json();
 
     const cards = json?.data?.data?.cards || [];
-    let list = [];
 
+    let list = [];
     cards.forEach((card) => {
       const restaurants =
         card?.card?.card?.gridElements?.infoWithStyle?.restaurants;
@@ -32,25 +32,32 @@ const Body = () => {
   };
 
   const OnlineStatus = useOnlineStatus();
+
   if (OnlineStatus === false)
-    return <h1 className="text-center text-xl font-semibold text-red-500 mt-10">⚠ You are offline. Check your internet.</h1>;
+    return (
+      <h1 className="text-center text-2xl text-red-600 mt-10 font-semibold">
+        ❌ You are offline — please check your internet connection
+      </h1>
+    );
 
   return CopyListOfRes.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="max-w-[1200px] mx-auto px-4 py-6">
-      <div className="flex flex-wrap gap-4 justify-center items-center mb-6">
+    <div className="px-4 sm:px-10 mt-6">
 
-        <div className="flex gap-3 items-center bg-gray-100 p-4 rounded-xl shadow-sm">
+      {/* Search + Filter */}
+      <div className="flex flex-wrap justify-center gap-4">
+
+        <div className="flex items-center gap-2 bg-gray-50 px-4 py-3 rounded-xl shadow-sm">
           <input
             type="text"
-            className="border border-gray-400 px-4 py-2 rounded-md focus:ring-2 focus:ring-blue-400 outline-none w-64"
+            className="border border-gray-400 rounded-md px-3 py-2 focus:outline-none"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
+            placeholder="Search Restaurants..."
           />
-
           <button
-            className="px-5 py-2 bg-green-500 text-white font-medium rounded-lg hover:bg-green-600 transition"
+            className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition"
             onClick={() => {
               const filteredRes = ListOfRes.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -62,25 +69,27 @@ const Body = () => {
           </button>
         </div>
 
-        <div className="flex items-center">
-          <button
-            className="px-5 py-2 bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600 transition"
-            onClick={() => {
-              const filteredList = ListOfRes.filter(
-                (res) => res.info.avgRating > 4.5
-              );
-              setCopyListOfRes(filteredList);
-            }}
-          >
-            Top Rated Restaurant ⭐
-          </button>
-        </div>
-
+        <button
+          className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition shadow-sm"
+          onClick={() => {
+            const filteredList = ListOfRes.filter(
+              (res) => res.info.avgRating > 4.5
+            );
+            setCopyListOfRes(filteredList);
+          }}
+        >
+          ⭐ Top Rated Restaurants
+        </button>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6 justify-items-center">
+      {/* Restaurant Cards */}
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10 justify-items-center">
         {CopyListOfRes.map((restaurant) => (
-          <Link key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id}>
+          <Link
+            key={restaurant.info.id}
+            to={"/restaurants/" + restaurant.info.id}
+            className="w-full flex justify-center"
+          >
             <RestaurantCard resData={restaurant} />
           </Link>
         ))}
