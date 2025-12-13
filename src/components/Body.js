@@ -10,6 +10,7 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
   const [CopyListOfRes, setCopyListOfRes] = useState([]);
 
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -17,6 +18,7 @@ const Body = () => {
   const fetchData = async () => {
     const data = await fetch(Restaurant_API);
     const json = await data.json();
+    
 
     const cards = json?.data?.data?.cards || [];
 
@@ -29,10 +31,10 @@ const Body = () => {
 
     setListOfRes(list);
     setCopyListOfRes(list);
+    
   };
 
   const OnlineStatus = useOnlineStatus();
-
   if (OnlineStatus === false)
     return (
       <h1 className="text-center text-2xl text-red-600 mt-10 font-semibold">
@@ -88,9 +90,11 @@ const Body = () => {
           <Link
             key={restaurant.info.id}
             to={"/restaurants/" + restaurant.info.id}
-            className="w-full flex justify-center"
-          >
-            <RestaurantCard resData={restaurant} />
+            className="w-full flex justify-center">
+
+            
+
+           <RestaurantCard resData={restaurant} /> 
           </Link>
         ))}
       </div>

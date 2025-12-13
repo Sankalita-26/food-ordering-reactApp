@@ -1,19 +1,28 @@
 import useRestaurantMenu from "../utils/useRestaurantMenu.";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
+import RestaurantCategory from "./RestaurantCategory"
+import { useState } from "react";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
   const resInfo = useRestaurantMenu(resId);
+  const [showIndex,setShowIndex]=useState();
 
   if (resInfo === null) return <Shimmer />;
 
   const { name, cuisines, costForTwo } =
     resInfo?.cards[2]?.card?.card?.info || {};
 
-  const itemCards =
-    resInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[1]?.card
-      ?.card?.itemCards || [];
+  // const itemCards =
+  //   resInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[1]?.card
+  //     ?.card?.itemCards || [];
+
+      console.log(resInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
+      const categories=resInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(c=>c.card?.card?.["@type"]== "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
+      // console.log(categories);
+
+      
 
   return (
     <div className="max-w-4xl mx-auto p-6 sm:p-10 bg-white shadow-xl rounded-xl mt-6 sm:mt-10 space-y-7">
@@ -38,22 +47,19 @@ const RestaurantMenu = () => {
         📜 Menu
       </h2>
 
-      {/* Items List */}
-      <ul className="space-y-4 mt-6">
-        {itemCards.map((item) => (
-          <li
-            key={item.card.info.id}
-            className="flex justify-between items-center bg-gray-100 hover:bg-gray-200 p-4 rounded-lg shadow-sm transition"
-          >
-            <span className="font-semibold text-gray-800 text-lg">
-              {item.card.info.name}
-            </span>
-            <span className="font-bold text-green-600">
-              ₹ {(item.card.info.price ?? item.card.info.defaultPrice) / 100}
-            </span>
-          </li>
-        ))}
-      </ul>
+      
+      {categories.map((category,index)=>(<RestaurantCategory key={category?.card?.card?.title}data={category?.card?.card}
+      showItem={index==showIndex ? true :false}
+      setShowIndex={()=>setShowIndex(index === showIndex ? null : index)}
+      />
+      
+    
+    ))}
+      
+
+
+
+
     </div>
   );
 };

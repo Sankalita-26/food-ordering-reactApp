@@ -19,8 +19,8 @@ const RestaurantCard = (props) => {
         src={CDN_URL + cloudinaryImageId}
         alt={name}
         onError={(e) => {
-          e.target.src =
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Hyderabadi_Chicken_Biryani.jpg/2560px-Hyderabadi_Chicken_Biryani.jpg";
+          e.target.src ="https://media.istockphoto.com/id/1328536877/photo/delicious-mutton-biryani-served-in-black-pot-with-raita-kolkata-style-dum-biryani-with-mutton.jpg?s=612x612&w=0&k=20&c=MSQMxoD2AkH36lA1M1oIwWYKQk3jdJ8xxGaFgL2MyQY="; 
+            // "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Hyderabadi_Chicken_Biryani.jpg/2560px-Hyderabadi_Chicken_Biryani.jpg";
         }}
       />
 

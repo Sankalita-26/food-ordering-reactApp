@@ -5,7 +5,7 @@ export const LOGO_URL="https://market-resized.envatousercontent.com/previews/fil
 
 
 
-export const FOODFIRE_API_URL = "https://namastedev.com/api/v1/listRestaurants";
+// export const FOODFIRE_API_URL = "https://namastedev.com/api/v1/listRestaurants";
 
 export const Menu_API ="https://corsproxy.io/https://namastedev.com/api/v1/listRestaurantMenu/";
 
