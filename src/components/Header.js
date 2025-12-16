@@ -1,15 +1,22 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
 import { LOGO_URL } from "../utils/constant";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
   const OnlineStatus = useOnlineStatus();
   const [BtnNameReact, setBtnNameReact] = useState("Login");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const {loggedIUser}=useContext(UserContext);
+
+  
 
   return (
     <div className="flex justify-between items-center bg-white shadow-md px-4 sm:px-8 py-4 sticky top-0 z-50">
+
+      
+      
 
       {/* Logo */}
       <img
@@ -17,8 +24,11 @@ const Header = () => {
         src={LOGO_URL}
         alt="logo"
       />
+      <h1 className="text-2xl font-extrabold animate-pulse text-amber-800">{loggedIUser} welcome to FoodieHut</h1>
+
 
       {/* Desktop Menu */}
+      
       <ul className="hidden md:flex gap-6 items-center text-lg font-medium">
         <li>Online: {OnlineStatus ? "🟢" : "🔴"}</li>
         <li><Link className="hover:text-blue-600 transition" to="/">Home</Link></li>

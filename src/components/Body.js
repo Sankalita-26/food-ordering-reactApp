@@ -1,14 +1,16 @@
 import RestaurantCard from "./RestaurantCard";
-import { useState, useEffect } from "react";
+import { useState, useEffect,useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { Restaurant_API } from "../utils/constant";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [ListOfRes, setListOfRes] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [CopyListOfRes, setCopyListOfRes] = useState([]);
+const {loggedIUser}=useContext(UserContext);
 
 
   useEffect(() => {
@@ -41,6 +43,8 @@ const Body = () => {
         ❌ You are offline — please check your internet connection
       </h1>
     );
+
+    const {setUserName}=useContext(UserContext);
 
   return CopyListOfRes.length === 0 ? (
     <Shimmer />
@@ -82,8 +86,17 @@ const Body = () => {
         >
           ⭐ Top Rated Restaurants
         </button>
-      </div>
+        
 
+        
+      </div>
+      <div className="m-4 p-4 flex item-center">
+        <label className="text-l py-2 m-2">Username: </label>
+        <input className="border p-1 m-2"
+            value={loggedIUser}
+            onChange={(e)=>setUserName(e.target.value)}/>
+            
+            </div>
       {/* Restaurant Cards */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10 justify-items-center">
         {CopyListOfRes.map((restaurant) => (
@@ -91,6 +104,8 @@ const Body = () => {
             key={restaurant.info.id}
             to={"/restaurants/" + restaurant.info.id}
             className="w-full flex justify-center">
+
+              
 
             
 
