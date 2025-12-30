@@ -29,6 +29,7 @@ const Header = () => {
       <h1 className="text-2xl font-extrabold animate-pulse text-amber-800">{loggedIUser} welcome to FoodieHut</h1>
 
 
+
       {/* Desktop Menu */}
       
       <ul className="hidden md:flex gap-6 items-center text-lg font-medium">
@@ -51,14 +52,17 @@ const Header = () => {
       >
         {BtnNameReact}
       </button>
+      
 
       {/* Hamburger (Mobile) */}
+      
       <button
         className="md:hidden text-3xl"
         onClick={() => setIsMenuOpen(!isMenuOpen)}
       >
         {isMenuOpen ? "✖" : "☰"}
       </button>
+      <span className="md:hidden text-l">🛒{cartItems.length}</span>
 
       {/* Mobile Dropdown Menu */}
       {isMenuOpen && (
@@ -68,7 +72,7 @@ const Header = () => {
           <Link onClick={() => setIsMenuOpen(false)} to="/about">About</Link>
           <Link onClick={() => setIsMenuOpen(false)} to="/contact">Contact</Link>
           <Link onClick={() => setIsMenuOpen(false)} to="/grocery">Grocery</Link>
-          <span>Cart 🛒 ({cartItems.length})</span>
+          
 
           <button
             className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition shadow-sm"
