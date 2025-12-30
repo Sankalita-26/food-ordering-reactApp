@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import {lazy,Suspense} from "react";
+import { useEffect, useState ,lazy,Suspense} from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body  from "./components/Body";
@@ -12,7 +11,7 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import { createBrowserRouter,RouterProvider,Outlet } from "react-router-dom";
 import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
-import AppStore from "./utils/Appstore";
+import appStore from "./utils/appStore"
 
 
 
@@ -52,14 +51,14 @@ const AppLayout=()=>{
 
   
   return(
-    <Provider store={AppStore}>
+    <Provider store={appStore}>
       <UserContext.Provider value={{loggedIUser: userName,setUserName}}>
     <div className="app">
       <Header/>
       <Outlet/>
 
     </div>
-    </UserContext.Provider>a
+    </UserContext.Provider>
 
 
     </Provider>
