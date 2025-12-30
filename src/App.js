@@ -12,7 +12,11 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import { createBrowserRouter,RouterProvider,Outlet } from "react-router-dom";
 import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
-import appstore from "./utils/Appstore";
+import AppStore from "./utils/Appstore";
+
+
+
+
 
 //***Plan***
 //Header
@@ -48,7 +52,7 @@ const AppLayout=()=>{
 
   
   return(
-    <Provider store={appstore}>
+    <Provider store={AppStore}>
       <UserContext.Provider value={{loggedIUser: userName,setUserName}}>
     <div className="app">
       <Header/>
