@@ -4,10 +4,8 @@ import Itemlist from "./ItemList";
 const RestaurantCategory = ({data,showItem,setShowIndex})=>{
 const handleClick=()=>{
     setShowIndex();
-    
 
-    
-}
+} 
 
     return <div>
         <div className="w-full m-auto bg-slate-200 shadow-lg p-4">

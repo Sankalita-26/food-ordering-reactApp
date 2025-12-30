@@ -11,6 +11,8 @@ import RestaurantMenu from "./components/RestaurantMenu";
 
 import { createBrowserRouter,RouterProvider,Outlet } from "react-router-dom";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appstore from "./utils/Appstore";
 
 //***Plan***
 //Header
@@ -38,7 +40,7 @@ const AppLayout=()=>{
   const [userName,setUserName]=useState();
   useEffect(()=>{
     const data={
-      name:"Type your name"
+      name:" "
     };
     setUserName(data.name)
   },[]);
@@ -46,14 +48,19 @@ const AppLayout=()=>{
 
   
   return(
-
-    <UserContext.Provider value={{loggedIUser: userName,setUserName}}>
+    <Provider store={appstore}>
+      <UserContext.Provider value={{loggedIUser: userName,setUserName}}>
     <div className="app">
       <Header/>
       <Outlet/>
 
     </div>
-    </UserContext.Provider>
+    </UserContext.Provider>a
+
+
+    </Provider>
+
+    
 
   );
 };

@@ -3,12 +3,14 @@ import { LOGO_URL } from "../utils/constant";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const OnlineStatus = useOnlineStatus();
   const [BtnNameReact, setBtnNameReact] = useState("Login");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const {loggedIUser}=useContext(UserContext);
+  const cartItems=useSelector((store)=>store.cart.item);
 
   
 
@@ -35,7 +37,7 @@ const Header = () => {
         <li><Link className="hover:text-blue-600 transition" to="/about">About</Link></li>
         <li><Link className="hover:text-blue-600 transition" to="/contact">Contact</Link></li>
         <li><Link className="hover:text-blue-600 transition" to="/grocery">Grocery</Link></li>
-        <li>Cart 🛒</li>
+        <li >Cart 🛒 ({cartItems.length})</li>
       </ul>
 
       {/* Login / Logout button */}
@@ -66,7 +68,7 @@ const Header = () => {
           <Link onClick={() => setIsMenuOpen(false)} to="/about">About</Link>
           <Link onClick={() => setIsMenuOpen(false)} to="/contact">Contact</Link>
           <Link onClick={() => setIsMenuOpen(false)} to="/grocery">Grocery</Link>
-          <span>Cart 🛒</span>
+          <span>Cart 🛒 ({cartItems.length})</span>
 
           <button
             className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition shadow-sm"
