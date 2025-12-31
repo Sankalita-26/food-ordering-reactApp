@@ -38,7 +38,8 @@ const Header = () => {
         <li><Link className="hover:text-blue-600 transition" to="/about">About</Link></li>
         <li><Link className="hover:text-blue-600 transition" to="/contact">Contact</Link></li>
         <li><Link className="hover:text-blue-600 transition" to="/grocery">Grocery</Link></li>
-        <li >Cart 🛒 ({cartItems.length})</li>
+        <li><Link className="hover:text-blue-600 transition" to="/Cart">Cart 🛒 ({cartItems.length})</Link></li>
+        
       </ul>
 
       {/* Login / Logout button */}
@@ -62,7 +63,8 @@ const Header = () => {
       >
         {isMenuOpen ? "✖" : "☰"}
       </button>
-      <span className="md:hidden text-l">🛒{cartItems.length}</span>
+      
+      <Link className="hover:text-blue-600 transition md:hidden text-l" to="/Cart">Cart 🛒 ({cartItems.length})</Link>
 
       {/* Mobile Dropdown Menu */}
       {isMenuOpen && (

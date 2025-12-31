@@ -4,8 +4,9 @@ import { addItem } from "../utils/cartSlice";
 
 const Itemlist =({items})=>{
     const dispatch=useDispatch();
-    const handleAddItem=()=>{
-        dispatch(addItem(""))
+    
+    const handleAddItem=(item)=>{
+        dispatch(addItem(item))
     }
 
 
@@ -22,7 +23,7 @@ const Itemlist =({items})=>{
                 <div className="flex justify-between">
                     
                     <p className="text-xs">{item.card.info.description}</p>
-                    <button className="p-2 bg-slate-50 shadow-lg rounded-2xl" onClick={handleAddItem}>Add +</button> 
+                    <button className="p-2 bg-slate-50 shadow-lg rounded-2xl" onClick={()=>handleAddItem(item)}>Add +</button> 
                 
                 </div>
 
