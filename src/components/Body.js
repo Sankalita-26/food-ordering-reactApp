@@ -90,13 +90,13 @@ const {loggedIUser}=useContext(UserContext);
 
         
       </div>
-      <div className="m-4 p-4 flex item-center">
+      {/* <div className="m-4 p-4 flex item-center">
         <label className="text-l py-2 m-2">Username: </label>
         <input className="border p-1 m-2"
             value={loggedIUser}
             onChange={(e)=>setUserName(e.target.value)}/>
             
-            </div>
+            </div> */}
       {/* Restaurant Cards */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10 justify-items-center">
         {CopyListOfRes.map((restaurant) => (

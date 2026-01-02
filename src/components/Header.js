@@ -38,9 +38,11 @@ const Header = () => {
         <li><Link className="hover:text-blue-600 transition" to="/about">About</Link></li>
         <li><Link className="hover:text-blue-600 transition" to="/contact">Contact</Link></li>
         <li><Link className="hover:text-blue-600 transition" to="/grocery">Grocery</Link></li>
-        <li><Link className="hover:text-blue-600 transition" to="/Cart">Cart 🛒 ({cartItems.length})</Link></li>
-        
-      </ul>
+        <li><Link to="/Cart"className="relative flex items-center gap-2 hover:text-blue-600 transition"><span className="text-xl">🛒</span>
+        <span>Cart</span>{cartItems.length > 0 && (
+      <span className="absolute -top-2 -right-3 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
+        {cartItems.length}</span>)}</Link>
+        </li></ul>
 
       {/* Login / Logout button */}
       <button
@@ -64,7 +66,20 @@ const Header = () => {
         {isMenuOpen ? "✖" : "☰"}
       </button>
       
-      <Link className="hover:text-blue-600 transition md:hidden text-l" to="/Cart">Cart 🛒 ({cartItems.length})</Link>
+    <Link
+  to="/Cart"
+  className="relative md:hidden flex items-center gap-2 text-lg"
+>
+  <span className="text-2xl">🛒</span>
+  <span>Cart</span>
+
+  {cartItems.length > 0 && (
+    <span className="absolute -top-2 -right-3 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
+      {cartItems.length}
+    </span>
+  )}
+</Link>
+
 
       {/* Mobile Dropdown Menu */}
       {isMenuOpen && (
